@@ -43,7 +43,7 @@ void ImgObject::shiftPixels() {
   for (int i = 0; i < base_img_obj->getSize().y; i++) {
     for (int j = 0; j < base_img_obj->getSize().x; j++) {
       prev_pixel_color = base_img_obj->getPixel(j, i);
-      if (j + 8 * sin(sine_pos) < base_img_obj->getSize().x) {
+      if (j + 8 * sin(sine_pos) < base_img_obj->getSize().x && j + 8 * sin(sine_pos) > 0) {
         working_img_obj->setPixel(j + 8 * sin(sine_pos), i, prev_pixel_color);
       }
     }
