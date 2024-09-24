@@ -19,6 +19,7 @@ class ImgObject {
     int x_pos;
     int y_pos;
     double sine_pos;
+    double sine_pos_adj;
   public:
     // Create img_obj and tex_obj objects
     ImgObject();

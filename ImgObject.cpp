@@ -16,6 +16,7 @@ ImgObject::ImgObject() {
   x_pos = 240;
   y_pos = 120;
   sine_pos = 0;
+  sine_pos_adj = 0;
   // Load image into base_img_obj
   base_img_obj = new sf::Image;
   base_img_obj->loadFromFile("sonic1title.png");
@@ -38,8 +39,11 @@ ImgObject::ImgObject() {
 // Shift pixels in image
 void ImgObject::shiftPixels() {
   // Nested for loop that shifts every 2nd line in image
-  // Also create var to hold pixel data
+  //  Also create var to hold pixel data, reset sine_pos, and add an adjustment
+  // to sine_pos
   sf::Color prev_pixel_color;
+  sine_pos = 0;
+  sine_pos = sine_pos + sine_pos_adj;
   for (int i = 0; i < base_img_obj->getSize().y; i++) {
     for (int j = 0; j < base_img_obj->getSize().x; j++) {
       prev_pixel_color = base_img_obj->getPixel(j, i);
@@ -47,8 +51,11 @@ void ImgObject::shiftPixels() {
         working_img_obj->setPixel(j + 8 * sin(sine_pos), i, prev_pixel_color);
       }
     }
+    // Add a certain amount to sine_pos each line
     sine_pos = sine_pos + 0.1;
   }
+  // Add a certain amount to sine_pos_adj, basically changes speed
+  sine_pos_adj = sine_pos_adj + 0.1;
 }
 
 // Load modified img_obj into tex_obj to prepare for rendering
