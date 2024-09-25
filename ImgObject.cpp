@@ -38,7 +38,7 @@ ImgObject::ImgObject() {
 
 // Shift pixels in image
 void ImgObject::shiftPixels() {
-  // Nested for loop that shifts every 2nd line in image
+  // Nested for loop that shifts every horizontal line by 8 * sin(sine_pos)
   //  Also create var to hold pixel data, reset sine_pos, and add an adjustment
   // to sine_pos
   sf::Color prev_pixel_color;
