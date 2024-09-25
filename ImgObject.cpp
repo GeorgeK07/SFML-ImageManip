@@ -39,6 +39,9 @@ ImgObject::ImgObject() {
 // Shift pixels in image
 void ImgObject::shiftPixels() {
   // Nested for loop that shifts every horizontal line by 8 * sin(sine_pos)
+  //  Can make effect vertical by swapping all .y and .x and swapping all j and
+  // i (whole of j + 8 * sin(sine_pos) is swapped, not just j, also in the if
+  // statement j + 8 * sin(sine_pos) stays)
   //  Also create var to hold pixel data, reset sine_pos, and add an adjustment
   // to sine_pos
   sf::Color prev_pixel_color;
