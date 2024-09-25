@@ -25,7 +25,8 @@ class ImgObject {
     ImgObject();
     // Shift pixels in image
     void shiftPixels();
-    // Load modified img_obj into tex_obj to prepare for rendering
+    //  Load modified img_obj into tex_obj and set as texture of sprite_obj to
+    // prepare for rendering
     void loadImgIntoTex();
     // Render sprite_obj of ImgObject
     void renderImgObject(sf::RenderWindow* win);

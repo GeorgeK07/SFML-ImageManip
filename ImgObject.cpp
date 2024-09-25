@@ -19,15 +19,15 @@ ImgObject::ImgObject() {
   sine_pos_adj = 0;
   // Load image into base_img_obj
   base_img_obj = new sf::Image;
-  base_img_obj->loadFromFile("sonic1title.png");
-  if (!base_img_obj->loadFromFile("sonic1title.png")) {
+  base_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png");
+  if (!base_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png")) {
     std::cout << "Image failed to load.\n";
     exit(1);
   }
   // Load image into working_img_obj
   working_img_obj = new sf::Image;
-  working_img_obj->loadFromFile("sonic1title.png");
-  if (!working_img_obj->loadFromFile("sonic1title.png")) {
+  working_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png");
+  if (!working_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png")) {
     std::cout << "Image failed to load.\n";
     exit(1);
   }
@@ -58,7 +58,8 @@ void ImgObject::shiftPixels() {
   sine_pos_adj = sine_pos_adj + 0.1;
 }
 
-// Load modified img_obj into tex_obj to prepare for rendering
+//  Load modified img_obj into tex_obj and set as texture of sprite_obj to
+// prepare for rendering
 void ImgObject::loadImgIntoTex() {
   tex_obj->loadFromImage(*working_img_obj);
   sprite_obj->setTexture(*tex_obj);
