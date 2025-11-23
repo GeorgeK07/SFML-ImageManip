@@ -19,21 +19,26 @@ ImgObject::ImgObject() {
   sine_pos_adj = 0;
   // Load image into base_img_obj
   base_img_obj = new sf::Image;
-  base_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png");
-  if (!base_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png")) {
+  bool isExisting = base_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png");
+  if (!isExisting) {
     std::cout << "Image failed to load.\n";
     exit(1);
   }
   // Load image into working_img_obj
   working_img_obj = new sf::Image;
-  working_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png");
-  if (!working_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png")) {
+  isExisting = working_img_obj->loadFromFile("Sonic_the_Hedgehog-title.png");
+  if (!isExisting) {
     std::cout << "Image failed to load.\n";
     exit(1);
   }
   // Create new text_obj and sprite_obj and set properties
   tex_obj = new sf::Texture;
-  sprite_obj = new sf::Sprite;
+  isExisting = tex_obj->loadFromImage(*working_img_obj);
+  if (!isExisting) {
+    std::cout << "Image failed to load.\n";
+    exit(1);
+  }
+  sprite_obj = new sf::Sprite(*tex_obj);
 }
 
 // Shift pixels in image
@@ -47,11 +52,11 @@ void ImgObject::shiftPixels() {
   sf::Color prev_pixel_color;
   sine_pos = 0;
   sine_pos = sine_pos + sine_pos_adj;
-  for (int i = 0; i < base_img_obj->getSize().y; i++) {
-    for (int j = 0; j < base_img_obj->getSize().x; j++) {
-      prev_pixel_color = base_img_obj->getPixel(j, i);
+  for (unsigned int i = 0; i < base_img_obj->getSize().y; i++) {
+    for (unsigned int j = 0; j < base_img_obj->getSize().x; j++) {
+      prev_pixel_color = base_img_obj->getPixel({j, i});
       if (j + 8 * sin(sine_pos) < base_img_obj->getSize().x && j + 8 * sin(sine_pos) > 0) {
-        working_img_obj->setPixel(j + 8 * sin(sine_pos), i, prev_pixel_color);
+        working_img_obj->setPixel({(unsigned int)(j + 8 * sin(sine_pos)), i}, prev_pixel_color);
       }
     }
     // Add a certain amount to sine_pos each line
