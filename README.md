@@ -1,7 +1,7 @@
 # SFML-ImageManip
 An effect that wobbles an image made in SFML with C++, adhering to Object Oriented Programming design principles.
 
-https://github.com/user-attachments/assets/5f105aad-0776-44df-81a7-1c197785f92c
+https://github.com/user-attachments/assets/3f69da1d-b415-40ea-a934-e8793be92ede
 
 ## Build
 This program was built and tested with:  
